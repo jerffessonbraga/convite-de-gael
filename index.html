@@ -130,7 +130,6 @@ html, body {
 @keyframes sepBlink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
 .party-msg { display:none; font-family:'Fredoka One'; font-size:clamp(1rem,4vw,1.6rem); color:#e85d04; }
 
-  
 /* AIRPLANE */
 .airplane-scene { position:relative; z-index:10; height:clamp(200px,55vw,400px); display:flex; align-items:center; justify-content:center; animation:planeScene 4s ease-in-out infinite; }
 @keyframes planeScene { 0%,100%{transform:translateY(0) rotate(-1.5deg);} 50%{transform:translateY(-18px) rotate(1.5deg);} }
@@ -178,442 +177,132 @@ html, body {
 .btn-txt span { font-size:clamp(0.85rem,2.8vw,1.2rem); font-weight:700; }
 .hint-badge { display:inline-block; background:#ff4444; color:white; font-family:'Fredoka One'; font-size:clamp(0.6rem,1.8vw,0.75rem); padding:1px 7px; border-radius:20px; margin-top:2px; animation:badgePulse 1.5s ease-in-out infinite; }
 @keyframes badgePulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.1);} }
-.ripple { position:absolute; border-radius:50%; background:rgba(255,255,255,0.5); transform:scale(0); animation:rip 0.6s linear; pointer-events:none; }
-@keyframes rip { to{transform:scale(5);opacity:0;} }
 
-/* ===== MODAL CONFIRMAÇÃO ===== */
-#modalOverlay {
-  display:none; position:fixed; inset:0;
-  background:rgba(0,0,60,0.7); backdrop-filter:blur(6px);
-  z-index:500; align-items:center; justify-content:center;
-  padding:20px;
-}
+/* MODAL CONFIRMAÇÃO */
+#modalOverlay { display:none; position:fixed; inset:0; background:rgba(0,0,60,0.7); backdrop-filter:blur(6px); z-index:500; align-items:center; justify-content:center; padding:20px; }
 #modalOverlay.show { display:flex; }
-
-.modal {
-  background:linear-gradient(145deg,#fff8e7,#ffffff);
-  border-radius:28px; padding:28px 24px;
-  width:min(92vw,400px);
-  box-shadow:0 20px 60px rgba(0,0,60,0.4);
-  text-align:center;
-  animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
-  position:relative;
-}
+.modal { background:linear-gradient(145deg,#fff8e7,#ffffff); border-radius:28px; padding:28px 24px; width:min(92vw,400px); box-shadow:0 20px 60px rgba(0,0,60,0.4); text-align:center; animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1); position:relative; }
 @keyframes modalIn { from{transform:scale(0.7) translateY(40px);opacity:0;} to{transform:scale(1) translateY(0);opacity:1;} }
-
-.modal-close {
-  position:absolute; top:14px; right:18px;
-  background:none; border:none; font-size:1.4rem;
-  cursor:pointer; color:#aaa; line-height:1;
-}
-.modal-close:hover { color:#555; }
-
+.modal-close { position:absolute; top:14px; right:18px; background:none; border:none; font-size:1.4rem; cursor:pointer; color:#aaa; line-height:1; }
 .modal-icon { font-size:3.5rem; margin-bottom:8px; animation:planeBob 2s ease-in-out infinite; }
 .modal-title { font-family:'Fredoka One'; font-size:1.6rem; color:#1565c0; margin-bottom:6px; }
 .modal-subtitle { font-size:0.95rem; color:#666; margin-bottom:22px; line-height:1.5; }
-
-.modal-name-wrap {
-  margin-bottom:18px; text-align:left;
-}
+.modal-name-wrap { margin-bottom:18px; text-align:left; }
 .modal-name-wrap label { font-family:'Fredoka One'; font-size:0.95rem; color:#555; display:block; margin-bottom:6px; }
-.modal-name-input {
-  width:100%; padding:12px 16px;
-  border:2px solid #b8d9f5; border-radius:14px;
-  font-family:'Baloo 2'; font-size:1rem; color:#333;
-  outline:none; transition:border 0.2s;
-  background:#f8fbff;
-}
-.modal-name-input:focus { border-color:#1e88e5; background:white; }
-
+.modal-name-input { width:100%; padding:12px 16px; border:2px solid #b8d9f5; border-radius:14px; font-family:'Baloo 2'; font-size:1rem; color:#333; outline:none; background:#f8fbff; }
 .modal-btns { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
-
-.modal-btn {
-  padding:16px 10px; border-radius:18px;
-  font-family:'Fredoka One'; font-size:1.15rem;
-  border:none; cursor:pointer;
-  display:flex; flex-direction:column; align-items:center; gap:4px;
-  transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
-  box-shadow:0 5px 18px rgba(0,0,0,0.15);
-}
-.modal-btn:hover { transform:translateY(-3px) scale(1.04); }
+.modal-btn { padding:16px 10px; border-radius:18px; font-family:'Fredoka One'; font-size:1.15rem; border:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:0 5px 18px rgba(0,0,0,0.15); transition:all 0.2s; }
 .modal-btn:active { transform:scale(0.95); }
-.modal-btn .btn-emoji { font-size:2rem; }
-.modal-btn .btn-label { font-size:1rem; }
-
-.btn-sim {
-  background:linear-gradient(135deg,#25d366,#128c7e);
-  color:white; border-bottom:4px solid #0d6b5e;
-}
-.btn-nao {
-  background:linear-gradient(135deg,#ff6b6b,#e53935);
-  color:white; border-bottom:4px solid #b71c1c;
-}
-
-.modal-note { font-size:0.8rem; color:#aaa; }
-.modal-note span { color:#25d366; font-weight:700; }
-
-#confetti { position:fixed; inset:0; pointer-events:none; z-index:999; overflow:hidden; }
-.cp { position:absolute; top:-15px; animation:fall linear forwards; border-radius:2px; }
+.btn-sim { background:linear-gradient(135deg,#25d366,#128c7e); color:white; border-bottom:4px solid #0d6b5e; }
+.btn-nao { background:linear-gradient(135deg,#ff6b6b,#e53935); color:white; border-bottom:4px solid #b71c1c; }
+#confetti { position:fixed; inset:0; pointer-events:none; z-index:999; }
+.cp { position:absolute; top:-15px; animation:fall linear forwards; }
 @keyframes fall { to{transform:translateY(110vh) rotate(720deg);opacity:0;} }
-.scroll-hint { color:rgba(255,255,255,0.7); font-size:clamp(0.8rem,2.5vw,1rem); text-align:center; margin-top:14px; animation:blink 2s ease-in-out infinite; }
-#toast { display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.82); color:white; padding:12px 24px; border-radius:50px; font-family:'Fredoka One'; font-size:clamp(0.85rem,2.5vw,1rem); z-index:1000; white-space:nowrap; }
+.scroll-hint { color:rgba(255,255,255,0.7); font-size:clamp(0.8rem,2.5vw,1rem); text-align:center; margin-top:14px; }
 </style>
 </head>
 <body>
 
 <div id="confetti"></div>
-<div id="toast"></div>
 
-<!-- MODAL CONFIRMAÇÃO DE PRESENÇA -->
 <div id="modalOverlay" onclick="closeModalOutside(event)">
-  <div class="modal" id="modalBox">
+  <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-icon">✈️</div>
     <div class="modal-title">Vai vir à festa do Gael?</div>
-    <div class="modal-subtitle">🎂 Domingo, 22 de fevereiro às 16h<br>Espaço Ana Facó – Fortaleza/CE</div>
-
+    <div class="modal-subtitle">🎂 Domingo, 22 de fevereiro às 16h</div>
     <div class="modal-name-wrap">
-      <label>👤 Seu nome (opcional):</label>
-      <input class="modal-name-input" id="guestName" type="text" placeholder="Ex: Maria e família" maxlength="40">
+      <label>👤 Seu nome:</label>
+      <input class="modal-name-input" id="guestName" type="text" placeholder="Ex: Família Silva">
     </div>
-
     <div class="modal-btns">
-      <button class="modal-btn btn-sim" onclick="confirmar('sim')">
-        <span class="btn-emoji">🎉</span>
-        <span class="btn-label">Vou Sim!</span>
-      </button>
-      <button class="modal-btn btn-nao" onclick="confirmar('nao')">
-        <span class="btn-emoji">😢</span>
-        <span class="btn-label">Não Vou</span>
-      </button>
+      <button class="modal-btn btn-sim" onclick="confirmar('sim')"><span>🎉 Vou!</span></button>
+      <button class="modal-btn btn-nao" onclick="confirmar('nao')"><span>😢 Não</span></button>
     </div>
-    <div class="modal-note">Você será redirecionado ao <span>WhatsApp</span> para confirmar</div>
   </div>
 </div>
 
-<!-- 🎵 Arquivo de áudio separado — muito mais leve! -->
-<audio id="bgMusic" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic" loop><source src="musica.mp3" type="audio/mpeg"></audio>
 
-<!-- ENVELOPE -->
 <div id="envelopeScreen">
   <div class="env-outer">
     <div class="env-body">
       <div class="env-flap" id="envFlap"></div>
-      <div class="env-center">
-        <div class="plane">✈️</div>
-        <p>Toque para abrir!</p>
-      </div>
+      <div class="env-center"><div class="plane">✈️</div><p>Toque para abrir!</p></div>
     </div>
   </div>
   <button class="open-btn" onclick="openCard()">🎵 Abrir Convite do Gael 🎉</button>
-  <div class="music-hint">🎶 Com música surpresa! Toque para ouvir!</div>
 </div>
 
-<!-- CARD -->
 <div id="cardScreen">
-<div class="card">
-  <div class="sky"></div>
-  <div class="cloud cl1"></div><div class="cloud cl2"></div>
-  <div class="cloud cl3"></div><div class="cloud cl4"></div>
-  <div id="starsDiv"></div>
-  <div class="moon">🌙</div>
-  <div class="top-plane">✈️</div>
-  <div class="lighthouse">🗼</div>
-  <div class="balloon bl1">🎈</div>
-  <div class="balloon bl2">🎈</div>
-  <div class="note n1">🎵</div>
-  <div class="note n2">🎶</div>
-  <div class="note n3">🎵</div>
-  <div class="note n4">🎶</div>
+  <div class="card">
+    <div class="sky"></div>
+    <div id="starsDiv"></div>
+    <div class="card-header">
+      <div class="name-text">GAEL</div>
+      <div class="age-text">2 ANOS 🎂</div>
+      <div class="date-ribbon">📅 22 de Fevereiro às 16h</div>
+    </div>
 
-  <div class="card-header">
-    <div class="name-text">GAEL</div>
-    <div class="age-text">2 ANOS 🎂</div>
-    <div class="date-ribbon">📅 Domingo, 22 de fevereiro, às 16h</div>
-  </div>
-
-  <!-- PLAYER -->
-  <div class="music-player" id="musicPlayer">
-    <div class="music-icon" id="musicIcon">🎵</div>
-    <div class="music-info">
-      <div class="music-title">🛩️ Preparar pra Decolar!</div>
-      <div class="music-sub" id="musicSub">Carregando música...</div>
-      <div class="progress-wrap" onclick="seekAudio(event)">
-        <div class="progress-bg"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="airplane-scene">
+      <div class="plane-body">
+        <div class="baby-pilot"><img src="foto.png"></div>
+        <div class="fuselage"><div class="cockpit"><img src="foto.png"></div></div>
+        <div class="propeller"><div class="prop-blade pb1"></div><div class="prop-blade pb2"></div></div>
+        <div class="wheel wheel1"></div><div class="wheel wheel2"></div>
       </div>
     </div>
-    <div class="music-controls">
-      <button class="ctrl-btn vol-btn" onclick="toggleMute()" id="volBtn">🔊</button>
-      <button class="ctrl-btn play-btn" onclick="togglePlay()" id="playBtn">⏸️</button>
-    </div>
-  </div>
 
-  <!-- COUNTDOWN -->
-  <div class="countdown-wrap">
-    <div class="countdown-label">⏳ Faltam para a festa do <span>Gael!</span></div>
-    <div class="countdown-boxes" id="cdBoxes">
-      <div class="cd-box"><div class="cd-num" id="cd-dias">00</div><div class="cd-unit">dias</div></div>
-      <div class="cd-sep">:</div>
-      <div class="cd-box"><div class="cd-num" id="cd-horas">00</div><div class="cd-unit">horas</div></div>
-      <div class="cd-sep">:</div>
-      <div class="cd-box"><div class="cd-num" id="cd-min">00</div><div class="cd-unit">min</div></div>
-      <div class="cd-sep">:</div>
-      <div class="cd-box"><div class="cd-num" id="cd-seg">00</div><div class="cd-unit">seg</div></div>
-    </div>
-    <div class="party-msg" id="partyMsg">🎉 É HOJE! Vamos festejar! 🎂✈️</div>
-  </div>
-
-  <!-- AVIÃO -->
-  <div class="airplane-scene">
-    <div class="plane-body">
-      <div class="baby-pilot">
-        <!-- 📸 Foto separada — referência direta ao arquivo foto.png -->
-        <img src="foto.png" alt="Gael piloto">
+    <div class="card-bottom">
+      <div class="venue-box">
+        <div class="venue-name">🏠 Espaço Ana Facó</div>
+        <div class="venue-addr">Rua Ana Facó, 111 – Fortaleza</div>
       </div>
-      <div class="wing-tail"></div>
-      <div class="fuselage">
-        <div class="cockpit">
-          <img src="foto.png" alt="">
-        </div>
-      </div>
-      <div class="wing-main"></div>
-      <div class="nose"></div>
-      <div class="propeller">
-        <div class="prop-blade pb1"></div>
-        <div class="prop-blade pb2"></div>
-        <div class="prop-blade pb3"></div>
-      </div>
-      <div class="prop-hub"></div>
-      <div class="wheel wheel1"></div>
-      <div class="wheel wheel2"></div>
-      <div class="trail">
-        <span class="trail-dot td1"></span><span class="trail-dot td2"></span>
-        <span class="trail-dot td3"></span><span class="trail-dot td4"></span>
+      <div class="btns">
+        <button class="btn btn-wa" onclick="openModal()"><span>Confirmar Presença</span></button>
+        <a href="https://maps.app.goo.gl/YourMapLink" class="btn btn-map"><span>Ver Mapa</span></a>
       </div>
     </div>
   </div>
-
-  <div class="card-bottom">
-    <div class="slogan">Venha comemorar conosco<br>esse momento tão especial! 🌟</div>
-    <div class="venue-box">
-      <div class="venue-name">🏠 Espaço Ana Facó</div>
-      <div class="venue-addr">Rua Ana Facó, 111 – Carlito Pamplona<br>Fortaleza – CE, 60335-430</div>
-    </div>
-    <div class="btns">
-      <button class="btn btn-wa" onclick="openModal()">
-        <span class="btn-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="16" fill="#25D366"/>
-            <path d="M23.5 19.9c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.4-.8 1-1 1.2-.2.2-.4.2-.7.1-1.9-.9-3.2-1.7-4.4-3.8-.3-.6.3-.5.9-1.7.1-.2 0-.4-.1-.5-.1-.1-.7-1.7-1-2.4-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.1 2 3.1 4.9 4.3 2.9 1.2 2.9.8 3.4.8.5 0 1.8-.7 2-1.4.2-.6.2-1.2.1-1.3z" fill="white"/>
-          </svg>
-        </span>
-        <div class="btn-txt">
-          <small>Confirmar presença</small>
-          <span>Sim ou Não</span>
-          <span class="hint-badge">Toque aqui! 👆</span>
-        </div>
-      </button>
-      <a href="https://maps.google.com/?q=Rua%20Ana%20Fac%C3%B3%2C%20111%2C%20Carlito%20Pamplona%2C%20Fortaleza%2C%20CE%2C%2060335-430"
-         target="_blank" rel="noopener noreferrer" class="btn btn-map" onclick="handleBtn(event,'map')">
-        <span class="btn-icon">📍</span>
-        <div class="btn-txt">
-          <small>Como chegar</small>
-          <span>Ver no Mapa</span>
-          <span class="hint-badge">Abrir GPS 🗺️</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="scroll-hint">🎵 Com música! Compartilhe com a família! 🎉</div>
 </div>
 
 <script>
 const audio = document.getElementById('bgMusic');
-let muted = false;
-let notesActive = false;
-let prevSeg = -1;
 
 function openCard() {
-  // Toca dentro do clique — browser permite!
-  audio.volume = 0.75;
-  audio.play().then(() => {
-    notesActive = true;
-    animateNotes();
-    document.getElementById('musicSub').textContent = 'Música especial do Gael ✨';
-    document.getElementById('musicPlayer').classList.add('music-playing');
-  }).catch(() => {
-    document.getElementById('playBtn').textContent = '▶️';
-    document.getElementById('musicSub').textContent = 'Toque ▶️ para ouvir 🎵';
-  });
-
+  audio.play().catch(() => {});
   document.getElementById('envFlap').classList.add('open');
   setTimeout(() => {
     document.getElementById('envelopeScreen').style.display = 'none';
     document.getElementById('cardScreen').style.display = 'block';
-    makeStars();
     confetti();
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    setInterval(updateProgress, 500);
   }, 900);
 }
 
-function togglePlay() {
-  const btn = document.getElementById('playBtn');
-  const player = document.getElementById('musicPlayer');
-  if (audio.paused) {
-    audio.play().then(() => {
-      btn.textContent = '⏸️';
-      player.classList.add('music-playing');
-      notesActive = true;
-      animateNotes();
-    });
-  } else {
-    audio.pause();
-    btn.textContent = '▶️';
-    player.classList.remove('music-playing');
-    notesActive = false;
-  }
-}
+function openModal() { document.getElementById('modalOverlay').classList.add('show'); }
+function closeModal() { document.getElementById('modalOverlay').classList.remove('show'); }
+function closeModalOutside(e) { if (e.target.id === 'modalOverlay') closeModal(); }
 
-function toggleMute() {
-  muted = !muted;
-  audio.muted = muted;
-  document.getElementById('volBtn').textContent = muted ? '🔇' : '🔊';
-}
-
-function seekAudio(e) {
-  const bar = e.currentTarget.querySelector('.progress-bg');
-  const rect = bar.getBoundingClientRect();
-  const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-  if (audio.duration) audio.currentTime = pct * audio.duration;
-}
-
-function updateProgress() {
-  if (audio.duration) {
-    document.getElementById('progressFill').style.width =
-      (audio.currentTime / audio.duration * 100) + '%';
-  }
-}
-
-const noteEls = ['note1','note2','note3','note4'];
-let noteIdx = 0;
-function animateNotes() {
-  if (!notesActive) return;
-  const el = document.getElementById(noteEls[noteIdx++ % 4]);
-  el.style.transition = 'none';
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(0)';
-  void el.offsetWidth;
-  el.style.transition = 'opacity 0.4s, transform 2.5s ease-out';
-  el.style.opacity = '1';
-  el.style.transform = `translateY(-${35+Math.random()*25}px) rotate(${(Math.random()-0.5)*30}deg)`;
-  setTimeout(() => { el.style.opacity = '0'; }, 2000);
-  setTimeout(animateNotes, 550);
-}
-
-const FESTA = new Date('2026-02-22T16:00:00-03:00');
-function updateCountdown() {
-  const diff = FESTA - new Date();
-  if (diff <= 0) {
-    document.getElementById('cdBoxes').style.display = 'none';
-    document.querySelector('.countdown-label').style.display = 'none';
-    document.getElementById('partyMsg').style.display = 'block';
-    confetti(200); return;
-  }
-  const pad = n => String(n).padStart(2,'0');
-  document.getElementById('cd-dias').textContent  = pad(Math.floor(diff/86400000));
-  document.getElementById('cd-horas').textContent = pad(Math.floor((diff%86400000)/3600000));
-  document.getElementById('cd-min').textContent   = pad(Math.floor((diff%3600000)/60000));
-  const seg = Math.floor((diff%60000)/1000);
-  if (seg !== prevSeg) {
-    const el = document.getElementById('cd-seg');
-    el.classList.remove('flip'); void el.offsetWidth;
-    el.textContent = pad(seg);
-    el.classList.add('flip');
-    setTimeout(() => el.classList.remove('flip'), 300);
-    prevSeg = seg;
-  }
-}
-
-function makeStars() {
-  const div = document.getElementById('starsDiv');
-  const colors = ['#ffc937','#ff8c00','#ffd700','#ffe066'];
-  for (let i=0;i<28;i++) {
-    const s = document.createElement('div'); s.className='star';
-    const sz = 8+Math.random()*13;
-    s.style.cssText=`position:absolute;z-index:2;left:${Math.random()*88+2}%;top:${Math.random()*55+2}%;width:${sz}px;height:${sz}px;background:${colors[i%4]};clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:twinkle ${1.2+Math.random()*2.5}s ease-in-out infinite;animation-delay:${Math.random()*3}s;`;
-    div.appendChild(s);
-  }
-}
-
-function confetti(n=100) {
-  const c = document.getElementById('confetti');
-  const colors=['#ffd700','#ff4444','#1a6fb5','#00cc66','#ff8c00','#e85d04','#7ec8f0','#ff69b4'];
-  for(let i=0;i<n;i++) {
-    const p=document.createElement('div'); p.className='cp';
-    const size=7+Math.random()*12;
-    p.style.cssText=`left:${Math.random()*100}vw;width:${size}px;height:${size}px;background:${colors[i%8]};border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${2+Math.random()*3}s;animation-delay:${Math.random()*1.5}s;`;
-    c.appendChild(p); setTimeout(()=>p.remove(),6500);
-  }
-}
-
-// ===== MODAL CONFIRMAÇÃO =====
-// Número correto: 55 85 9678-5688
-const WA_NUMBER = '5585967858688';
-
-function openModal() {
-  document.getElementById('modalOverlay').classList.add('show');
-  document.getElementById('guestName').focus();
-}
-
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('show');
-}
-
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
-}
-
-function confirmar(resposta) {
-  const nome = document.getElementById('guestName').value.trim();
-  let msg = '';
-
-  if (resposta === 'sim') {
-    msg = nome
-      ? `Olá! Sou ${nome} e confirmo minha presença na festa do Gael! 🎉✈️🎂`
-      : `Olá! Confirmo minha presença na festa do Gael! 🎉✈️🎂`;
-  } else {
-    msg = nome
-      ? `Olá! Sou ${nome}. Infelizmente não conseguirei ir à festa do Gael. 😢 Feliz aniversário ao pequeno piloto! ✈️🎂`
-      : `Olá! Infelizmente não conseguirei ir à festa do Gael. 😢 Feliz aniversário ao pequeno piloto! ✈️🎂`;
-  }
-
-  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+function confirmar(status) {
+  const nome = document.getElementById('guestName').value || "Convidado";
+  const meuNumero = "5585996785688"; // SEU NÚMERO CORRETO
+  let texto = status === 'sim' ? `Confirmado! 🎉 Nome: ${nome}` : `Não poderei ir 😢 Nome: ${nome}`;
+  window.open(`https://api.whatsapp.com/send?phone=${meuNumero}&text=${encodeURIComponent(texto)}`, '_blank');
   closeModal();
-  window.open(url, '_blank');
 }
 
-function showToast(msg) {
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.style.display='block';
-  setTimeout(()=>{t.style.display='none';},3000);
+function confetti() {
+  const container = document.getElementById('confetti');
+  for (let i = 0; i < 50; i++) {
+    const c = document.createElement('div');
+    c.className = 'cp';
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.width = '8px'; c.style.height = '8px';
+    c.style.background = ['#ffd700','#1e88e5','#ff8c00'][Math.floor(Math.random()*3)];
+    c.style.animationDuration = (Math.random()*2+2)+'s';
+    container.appendChild(c);
+  }
 }
-
-function handleBtn(e,type) {
-  const btn=e.currentTarget;
-  const r=document.createElement('span'); r.className='ripple';
-  const rect=btn.getBoundingClientRect();
-  const sz=Math.max(btn.offsetWidth,btn.offsetHeight);
-  r.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-rect.left-sz/2}px;top:${e.clientY-rect.top-sz/2}px`;
-  btn.appendChild(r); setTimeout(()=>r.remove(),700);
-  showToast(type==='wa'?'📱 Abrindo WhatsApp...':'🗺️ Abrindo o mapa...');
-}
-
-setInterval(()=>{if(document.getElementById('cardScreen').style.display!='none') confetti(35);},20000);
 </script>
 </body>
 </html>
